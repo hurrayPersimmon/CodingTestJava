@@ -10,4 +10,14 @@ class Solution {
         
         return answer;
     }
+    // // Exception의 활용방법
+    // if(s.length() == 4 || s.length() == 6){
+    //       try{
+    //           int x = Integer.parseInt(s);
+    //           return true;
+    //       } catch(NumberFormatException e){
+    //           return false;
+    //       }
+    //   }
+    //   else return false;
 }
