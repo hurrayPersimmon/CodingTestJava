@@ -10,8 +10,8 @@ class Solution {
             else total.put(genres[i], plays[i]);
         }
         
-        while(!findGenre(plays, total).equals("")){
-            String genre = findGenre(plays, total);
+        while(!total.isEmpty()){
+            String genre = findGenre(total);
             total.remove(genre);
             listed(genre, genres, plays, answer);
         }
@@ -19,7 +19,7 @@ class Solution {
         return answer;
     }
     
-    private String findGenre(int[] plays, HashMap<String, Integer> total){
+    private String findGenre(HashMap<String, Integer> total){
         String genre = "";
         int max = 0;
         for(String key : total.keySet()){
