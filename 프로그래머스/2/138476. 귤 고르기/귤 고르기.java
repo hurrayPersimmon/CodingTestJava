@@ -3,7 +3,6 @@ import java.util.*;
 class Solution {
     public int solution(int k, int[] tangerine) {
         int answer = 0;
-        // if(k == tangerine.length) answer = k;
         Arrays.sort(tangerine);
         int [] amountTangerine = new int[tangerine.length];
         int index = 0;
