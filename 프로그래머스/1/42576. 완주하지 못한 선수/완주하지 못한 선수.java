@@ -1,47 +1,22 @@
 import java.util.*;
 class Solution {
     public String solution(String[] participant, String[] completion) {
-        Set<String> runners = new HashSet<>();
-        
-        for (String runner: participant) {
-            if (!runners.contains(runner)) {
-                runners.add(runner);
-            } else {
-                runners.remove(runner);
+        HashMap<String,Integer> runners = new HashMap<>();
+        for(String runner : completion){
+            if(runners.containsKey(runner)){
+                runners.put(runner, runners.get(runner)+1);
+            }else{
+                runners.put(runner, 1);
             }
         }
         
-        for (String runner: completion) {
-            if (runners.contains(runner)) {
-                runners.remove(runner);
-            } else {
-                runners.add(runner);
-            }
+        for(String complete : participant){
+            
+            if(!runners.containsKey(complete) || runners.get(complete) == 0) return complete;
+            
+            runners.put(complete, runners.get(complete)-1);
         }
-        
-        for (String ans: runners) {
-            return ans;
-        }
-        
-        
-        
-        
-//         for(int i = 0; i<completion.length; i++){
-//             for(int j = 0; j<participant.length; j++){
-//                 if(completion[i].equals(participant[j])){
-//                     completion[i] = "";
-//                     participant[j] = "";
-//                     break;
-//                 }
-//             }
-//         }
-//         for(String runner : participant) if(!runner.equals("")) return runner;
-        
-        // List<String> completionList = new ArrayList<>(Arrays.asList(completion
-        // for(String name : participant){
-        //     if(!completionList.contains(name)) return name;
-        //     else completionList.remove(name);        
-        // }
-        return null;
+        return "";
+    
     }
 }
