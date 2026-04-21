@@ -1,9 +1,11 @@
 import java.util.*;
 class Solution {
     boolean solution(String s) {
-        Deque<String> deque = new ArrayDeque<>();
-        for(String x : s.split("")){
-            if(x.equals("(")) deque.push("(");
+        Deque<Integer> deque = new ArrayDeque<>();
+        for(char x : s.toCharArray()){
+            if(x == '(') deque.push(1);
+        // for(String x : s.split("")){
+            // if(x.equals("(")) deque.push("(");
             else{
                 if(deque.isEmpty()) return false;
                 deque.pop();
