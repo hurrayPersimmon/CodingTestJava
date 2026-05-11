@@ -1,35 +1,25 @@
 import java.util.*;
 class Solution {
     boolean solution(String s) {
-        Deque<Integer> deque = new ArrayDeque<>();
-        for(char x : s.toCharArray()){
-            if(x == '(') deque.push(1);
-        // for(String x : s.split("")){
-            // if(x.equals("(")) deque.push("(");
-            else{
-                if(deque.isEmpty()) return false;
-                deque.pop();
-            }   
-        }
-        
-        return deque.isEmpty()? true : false;
-        
-//         boolean answer = false;
-//         int index = 0;
-//         int result = 0;
-        
+//         Deque<Integer> deque = new ArrayDeque<>();
 //         for(char x : s.toCharArray()){
-//             if(x == '(') result++;
-//             else result--;
-            
-//             index++;
-            
-//             if(result < 0 ||
-//                index == s.length() && x == '(')
-//                 return false;
-              
+//             if(x == '(') deque.push(1);
+//             else{
+//                 if(deque.isEmpty()) return false;
+//                 deque.pop();
+//             }   
 //         }
-
-//         return answer = result == 0 ? true : false;
+        
+//         return deque.isEmpty()? true : false;
+        
+        int count = 0;
+        
+        for(char x : s.toCharArray()){
+            if(x == '(') count++;
+            else count--;   
+            if(count < 0) return false;
+              
+        }
+        return count == 0;
     }
 }
