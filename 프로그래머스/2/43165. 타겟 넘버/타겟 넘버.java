@@ -1,33 +1,16 @@
-import java.util.*;
-
 class Solution {
-    int answer = 0;
-    
     public int solution(int[] numbers, int target) {
-        Deque deque = new ArrayDeque<>();
-        minus(numbers, 0, 0, target);
-        plus(numbers, 0, 0, target);
-        return answer;
+        return dfs(numbers, target, 0,0);
     }
     
-    public void minus(int[] numbers, int index, int result, int target){
-        result -= numbers[index];
-        if(index == numbers.length-1){
-            if(result == target) answer++;
-            return;
+    public int dfs(int[] numbers, int target, int result, int count){
+        if(count == numbers.length){
+            return target == result? 1: 0;
         }
-        minus(numbers, index+1, result, target);
-        plus(numbers, index+1, result, target);
+        
+        int minus = dfs(numbers, target, result - numbers[count], count+1);
+        int plus = dfs(numbers, target, result + numbers[count], count+1);
+        
+        return minus + plus;
     }
-    
-    public void plus(int[] numbers, int index, int result, int target){
-        result += numbers[index];
-        if(index == numbers.length-1){
-            if(result == target) answer++;
-            return;
-        }
-        minus(numbers, index+1, result, target);
-        plus(numbers, index+1, result, target);
-    }
-    
 }
