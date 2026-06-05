@@ -1,22 +1,15 @@
-class Solution {
-    public int solution(int[] d, long budget) {
-        int answer = d.length;
-        int sum = 0;
-        for(int num : d) sum += num;
+import java.util.*;
 
-        while(sum > budget){
-            int max = 0;
-            int index = 0;
-            for(int i= 0; i<d.length; i++){
-                if(d[i] > max){
-                    max = d[i];
-                    index = i;
-                }
-            }
-            sum -= max;
-            answer--;
-            d[index] = 0;
-            
+class Solution {
+    public int solution(int[] d, int budget) {
+        int answer = 0;
+        Arrays.sort(d);
+        int sum = 0;
+
+        for(int price : d){
+            sum += price;
+            if(sum > budget) return answer;
+            answer++;
         }
         return answer;
     }
